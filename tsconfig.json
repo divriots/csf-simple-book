@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "target": "ESNext",
+        "allowJs": true,
+        "experimentalDecorators": true,
+        "module": "ESNext",
+        "moduleResolution": "Node",
+        "sourceMap": true,
+    },
+    "include": [
+        "src/**/*.ts"
+    ]
+}

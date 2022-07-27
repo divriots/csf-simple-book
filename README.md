@@ -1,8 +1,63 @@
-# Standard JS WebComponent Starter-kit
+# CSF Simple Book
 
-## Links
+Simple (no dependency) story-book component to render CSF stories in any project, any framework.
 
-- [A Brief Introduction](https://www.webcomponents.org/introduction)
-- [W3C Specifications](https://github.com/w3c/webcomponents/)
-- [ShadowDOM](https://developers.google.com/web/fundamentals/web-components/shadowdom)
-- [CustomElements](https://developers.google.com/web/fundamentals/web-components/customelements)
+## Install
+
+```sh
+pnpm add @divriots/csf-simple-book @divriots/csf-helpers -D
+```
+
+## Example use
+
+```html
+<body>
+	<story-book></story-book>
+</body>
+```
+
+```js
+import { normalizeProjectAnnotations } from '@divriots/csf-helpers';
+import '@divriots/csf-simple-book';
+import { StoryBook } from '@divriots/csf-simple-book';
+
+// fetch all stories to include in the book (vite format: https://vitejs.dev/guide/features.html#glob-import )
+const storyModules = import.meta.glob('./**/*.stories.js');
+
+// project annotations to apply to all stories (e.g. render, renderToDOM, globals, parameters ...)
+const projectAnnotations = normalizeProjectAnnotations({
+  parameters: {
+    layout: 'centered',
+  }
+});
+
+document.getElementsByTagName('story-book')[0].initStoryModules(
+  storyModules,
+  projectAnnotations
+);
+
+// That's all
+```
+
+### Live demo
+
+Open in [stackblitz](https://stackblitz.com/github/divriots/csf-simple-book) 
+
+
+## Example use (react 18+)
+
+```js
+import * as reactConfig from '@divriots/csf-react-renderer';
+
+...
+const projectAnnotations = normalizeProjectAnnotations({
+  // will inject render & renderToDOM implementations for react
+  ...reactConfig,
+  parameters: {
+    layout: 'centered',
+  }
+});
+...
+
+```
+

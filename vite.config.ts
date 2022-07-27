@@ -1,11 +1,12 @@
 import { defineConfig } from 'vite';
+import dts from 'vite-plugin-dts'
 
 const pkg = require('./package.json')
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   return {
-    plugins: [],
+    plugins: [dts()],
     build: {
       minify: false,
       lib: {
