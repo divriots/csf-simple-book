@@ -75,7 +75,3 @@ export class StoryFile extends HTMLElement {
     this.shadowRoot.adoptedStyleSheets = [sheet];
   }
 }
-
-try {
-  customElements.define('story-file', StoryFile);
-} catch (e) {}

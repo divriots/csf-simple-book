@@ -1,11 +1,24 @@
 {
   "name": "@divriots/csf-simple-book",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
-    "serve": "npx wcd-cli@latest serve g25cXg2tW2wEDogWL9dH --open"
+    "serve": "npx wcd-cli@latest serve g25cXg2tW2wEDogWL9dH --open",
+    "dev": "vite",
+    "build": "node vite-lib-builder.mjs"
+  },
+  "main": "./dist/index.js",
+  "exports": {
+    "default": "./dist/index.js",
+    "story-file": "./dist/story-file.js",
+    "story-book": "./dist/story-book.js",
+    "story-card": "./dist/story-card.js"
   },
   "dependencies": {
     "@divriots/csf-helpers": "^0.0.11",
     "@storybook/csf": "0.0.2--canary.87bc651.0"
+  },
+  "devDependencies": {
+    "rollup": "^2.77.2",
+    "vite": "^3.0.3"
   }
 }

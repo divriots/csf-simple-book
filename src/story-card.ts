@@ -100,7 +100,3 @@ export class StoryCard extends HTMLElement {
     io.observe(this);
   }
 }
-
-try {
-  customElements.define('story-card', StoryCard);
-} catch (e) {}
