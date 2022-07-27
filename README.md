@@ -1,4 +1,4 @@
-# CSF Simple Book
+# CSF Simple Book [![npm Version](https://img.shields.io/npm/v/@divriots/csf-simple-book?cacheSeconds=1800)](https://npmjs.com/package/divriots/csf-simple-book)
 
 Simple (no dependency) story-book component to render CSF stories in any project, any framework.
 
