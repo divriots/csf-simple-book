@@ -1,0 +1,64 @@
+:host {
+  display: grid;
+  border: 1px solid black;
+  grid-template-rows: 1fr auto;
+  margin: 5px;
+}
+
+:host(.fullscreen) {
+  position: fixed;
+  border: none;
+  inset: 0;
+
+  background: white;
+  z-index: 1000;
+}
+
+:host(.error) > div.story-frame :before {
+  content: '❌';
+  font-size: 60px;
+  text-align: center;
+  margin-top: 10px;
+  display: block;
+}
+
+:host(.error) > div.story-frame ::slotted(div) {
+  display: none;
+}
+
+:host > div.story-frame {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+}
+:host(.fullscreen) > div.story-frame {
+  width: unset;
+  height: unset;
+}
+
+div.story-frame ::slotted(div) {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  transform: scale(0.5);
+  transform-origin: top left;
+}
+
+:host(.fullscreen) > div.story-frame ::slotted(div) {
+  width: unset;
+  height: unset;
+  overflow: auto;
+  transform: initial;
+}
+
+div.story-label {
+  text-align: center;
+  width: 100px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+:host(.fullscreen) > div.story-label {
+  width: unset;
+}
