@@ -1,6 +1,6 @@
 {
   "name": "@divriots/csf-simple-book",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "scripts": {
     "serve": "npx wcd-cli@latest serve g25cXg2tW2wEDogWL9dH --open",
     "dev": "vite",
@@ -17,7 +17,7 @@
     "src/*"
   ],
   "dependencies": {
-    "@divriots/csf-helpers": "^0.0.11",
+    "@divriots/csf-helpers": "^0.1.1",
     "@storybook/csf": "0.0.2--canary.87bc651.0"
   },
   "devDependencies": {

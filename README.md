@@ -17,24 +17,24 @@ pnpm add @divriots/csf-simple-book @divriots/csf-helpers -D
 ```
 
 ```js
-import { normalizeProjectAnnotations } from '@divriots/csf-helpers';
+import { getStoryStore } from '@divriots/csf-helpers';
 import '@divriots/csf-simple-book';
-import { StoryBook } from '@divriots/csf-simple-book';
 
 // fetch all stories to include in the book (vite format: https://vitejs.dev/guide/features.html#glob-import )
 const storyModules = import.meta.glob('./**/*.stories.js');
 
+// get the global story store singleton
+const storyStore = getStoryStore();
+
 // project annotations to apply to all stories (e.g. render, renderToDOM, globals, parameters ...)
-const projectAnnotations = normalizeProjectAnnotations({
+storyStore.setProjectAnnotations({
   parameters: {
     layout: 'centered',
   }
 });
 
-document.getElementsByTagName('story-book')[0].initStoryModules(
-  storyModules,
-  projectAnnotations
-);
+// loads story files into the store
+storyStore.loadModules(storyModules)
 
 // That's all
 ```
@@ -50,7 +50,7 @@ Open in [stackblitz](https://stackblitz.com/github/divriots/csf-simple-book)
 import * as reactConfig from '@divriots/csf-react-renderer';
 
 ...
-const projectAnnotations = normalizeProjectAnnotations({
+storyStore.setProjectAnnotations({
   // will inject render & renderToDOM implementations for react
   ...reactConfig,
   parameters: {

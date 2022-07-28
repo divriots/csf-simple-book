@@ -10,7 +10,7 @@ export default defineConfig(({ mode }) => {
     build: {
       minify: false,
       lib: {
-        entry: '/src/index.ts',
+        entry: './src/index.ts',
         name: 'index',
       },
       rollupOptions: {

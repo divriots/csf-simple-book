@@ -1,15 +1,6 @@
-import {
-  normalizeProjectAnnotations,
-  setupGlobals,
-} from '@divriots/csf-helpers';
-import './src'
-import { StoryBook } from './src';
+import { getStoryStore } from '@divriots/csf-helpers';
 
 const storyModules = import.meta.glob('./**/*.stories.ts');
-const projectAnnotations = normalizeProjectAnnotations({});
-setupGlobals(storyModules, projectAnnotations);
-
-(document.getElementsByTagName('story-book')[0] as StoryBook).initStoryModules(
-  storyModules,
-  projectAnnotations
-);
+const storyStore = getStoryStore();
+storyStore.setProjectAnnotations({})
+storyStore.loadModules(storyModules)
