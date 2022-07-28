@@ -1,6 +1,6 @@
 {
   "name": "@divriots/csf-simple-book",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "scripts": {
     "serve": "npx wcd-cli@latest serve g25cXg2tW2wEDogWL9dH --open",
     "dev": "vite",
