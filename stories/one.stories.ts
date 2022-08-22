@@ -1,5 +1,5 @@
 export default {
-  title: 'Samples',
+  title: 'Samples One',
   renderToDOM({ storyFn }, domElement) {
     domElement.innerHTML = storyFn()
   }

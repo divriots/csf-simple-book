@@ -5,7 +5,7 @@ template.innerHTML = /*html*/ `
 <div class="story-frame">
   <slot name="root">loading</slot>
 </div>
-<div class="story-label">story</div>
+<a class="story-label">story</a>
 `;
 const sheet = new CSSStyleSheet();
 sheet.replaceSync(css);
@@ -72,20 +72,25 @@ export class StoryCard extends HTMLElement {
     this.shadowRoot.appendChild(content);
     const label = this.shadowRoot.querySelector(
       '.story-label'
-    ) as HTMLDivElement;
+    ) as HTMLLinkElement;
     label.textContent = this.getAttribute('label') || 'story';
-    label.onclick = () => {
+    const getLabelUrl = (fullscreen: boolean) => fullscreen
+      ? `${window.location.origin}?path=${this.getAttribute('path')}`
+      : window.location.origin;
+
+    label.href = getLabelUrl(!this.classList.contains('fullscreen'))
+    label.onclick = (e) => {
       this.classList.toggle('fullscreen');
+      label.href = getLabelUrl(!this.classList.contains('fullscreen'))
       window.history.pushState(
         {},
         '',
-        this.classList.contains('fullscreen')
-          ? `${window.location.origin}?path=${this.getAttribute('path')}`
-          : window.location.origin
+        getLabelUrl(this.classList.contains('fullscreen'))
       );
       this.dispatchEvent(
         new FullScreenEvent(this.classList.contains('fullscreen'))
       );
+      e.preventDefault();
     };
     let io = new IntersectionObserver(async (entries) => {
       for (const entry of entries) {

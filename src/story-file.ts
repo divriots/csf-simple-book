@@ -9,8 +9,10 @@ import css from './story-file.css?raw';
 
 const template = document.createElement('template');
 template.innerHTML = /*html*/ `
-<a href="{hash}">🔗</a>
-<span>{title}</span>
+<h1>
+  <a class="anchor" aria-hidden="true" href="{hash}">🔗</a>
+  {title}
+</h1>
 <div class="story-list">
   <slot name="story"></slot>
 </div>
@@ -38,8 +40,8 @@ export class StoryFile extends HTMLElement {
         firstInit = true;
       }
       this.id = meta.title;
-      (this.content.children[0] as HTMLLinkElement).href = hash;
-      (this.content.children[1] as HTMLSpanElement).textContent = meta.title;
+      (this.content.children[0].children[0] as HTMLLinkElement).href = hash;
+      (this.content.children[0].childNodes[2] as Node).nodeValue = meta.title;
       for (const story of stories) {
         const prepared = prepareStory(story, meta, projectAnnotations);
         const currentPath = `/story/${prepared.id}`;

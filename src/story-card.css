@@ -51,14 +51,15 @@ div.story-frame ::slotted(div) {
   transform: initial;
 }
 
-div.story-label {
+a.story-label {
   text-align: center;
   width: 100px;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  text-decoration: none;
 }
 
-:host(.fullscreen) > div.story-label {
+:host(.fullscreen) > a.story-label {
   width: unset;
 }
